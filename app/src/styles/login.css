@@ -2,16 +2,14 @@
   background-color: #12002b;
   display: flex;
   align-items: center;
-  height: 83svh;
+  justify-content: center;
+  height: 80%;
 }
 /* Sign In Content */
 .sign-in-content {
   background-color: white;
-  box-sizing: border-box;
-  margin: 0 auto;
-  margin-top: 3rem;
   padding: 2rem;
-  width: 300px;
+  width: 20rem;
 }
 
 /* Icon */
