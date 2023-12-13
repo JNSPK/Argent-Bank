@@ -1,9 +1,9 @@
-.bg-dark {
+.main {
   background-color: #12002b;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80%;
+  height: 83%;
 }
 /* Sign In Content */
 .sign-in-content {

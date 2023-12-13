@@ -17,3 +17,26 @@ export function getLoginData(data) {
     return res;
   }
 }
+
+/* Get User */
+export function getUserData(data) {
+  if (data.body !== undefined) {
+    const res = {
+      status: data.status,
+      email: data.body.email,
+      firstName: data.body.firstName,
+      lastName: data.body.lastName,
+    };
+
+    return res;
+  } else {
+    const res = {
+      status: 0,
+      email: '',
+      firstName: '',
+      lastName: '',
+    };
+
+    return res;
+  }
+}

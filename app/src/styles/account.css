@@ -1,0 +1,36 @@
+/* Account */
+.account {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: left;
+  width: 80%;
+}
+
+.account-title {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.account-amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* Transaction */
+.transaction-button {
+  background-color: #00bc77;
+  border-color: #00bc77;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 8px;
+}

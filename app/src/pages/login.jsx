@@ -4,7 +4,7 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLogin } from '../services/API';
-import { getToken } from '../features/token';
+import { getToken } from '../slices/token';
 import { Navigate } from 'react-router-dom';
 
 function Login() {
@@ -64,7 +64,7 @@ function Login() {
     return <Navigate to='/profil' />;
 
   return (
-    <main className='bg-dark'>
+    <main className='main'>
       <section className='sign-in-content'>
         <FontAwesomeIcon icon={faCircleUser} />
         <h1>Sign In</h1>
