@@ -40,3 +40,13 @@ export function getUserData(data) {
     return res;
   }
 }
+
+/* Save User Profil Data */
+export function saveUserProfilData(data) {
+  const res = {
+    status: data.status,
+    message: data.message,
+  };
+
+  return res;
+}

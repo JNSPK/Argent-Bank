@@ -1,5 +1,4 @@
-import { getLoginData } from './API-Data';
-import { getUserData } from './API-Data';
+import { getLoginData, getUserData, saveUserProfilData } from './API-Data';
 
 /* Get Login */
 export const getLogin = async ({ email, password }) => {
@@ -13,7 +12,6 @@ export const getLogin = async ({ email, password }) => {
     method: 'POST',
   }).then((response) => response.json());
 
-  console.log(loginResponse);
   return getLoginData(loginResponse);
 };
 
@@ -30,4 +28,20 @@ export const getUser = async (token) => {
   }).then((response) => response.json());
 
   return getUserData(userResponse);
+};
+
+/* Save new name on edit */
+export const saveUserProfil = async (token, fullName) => {
+  const URL_API = 'http://localhost:3001/api/v1/user/profile';
+
+  const saveUserProfilResponse = await fetch(URL_API, {
+    body: JSON.stringify(fullName),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer' + token,
+    },
+    method: 'PUT',
+  }).then((response) => response.json());
+
+  return saveUserProfilData(saveUserProfilResponse);
 };

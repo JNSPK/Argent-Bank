@@ -4,6 +4,8 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getLogin } from '../services/API';
+import { setEmail } from '../slices/email';
+import { setPassword } from '../slices/password';
 import { getToken } from '../slices/token';
 import { Navigate } from 'react-router-dom';
 
@@ -11,34 +13,32 @@ function Login() {
   // Use State
   let [loginErreur, setLoginErreur] = useState('');
   let [loginStatus, setLoginStatus] = useState(0);
-
-  let [email, setEmail] = useState('');
-  let [password, setPassword] = useState('');
   let [remember, setRemember] = useState(false);
 
   // Use Selector
+  const email = useSelector((state) => state.email);
+  const password = useSelector((state) => state.password);
   const token = useSelector((state) => state.token.value);
 
   // Use Effect
   useEffect(() => {
-    if (token === localStorage.getItem('token')) {
-      ajoutToken(localStorage.getItem('token'));
+    const storedToken = localStorage.getItem('token');
+    if (token === storedToken) {
+      ajoutToken(storedToken);
     }
   });
 
   // Handle Submit
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const login = getLogin({ email, password });
 
-    login.then((res) => {
-      if (res.status !== 400) {
-        setLoginStatus(res.status);
-        ajoutToken(res.token);
-      } else {
-        setLoginErreur(res.message);
-      }
-    });
+    const res = await getLogin({ email, password });
+    if (res.status !== 400) {
+      setLoginStatus(res.status);
+      ajoutToken(res.token);
+    } else {
+      setLoginErreur(res.message);
+    }
   };
   // Handle Remember
   const handleRemember = (event) => {
@@ -49,7 +49,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const ajoutToken = (token) => {
-    if (remember === true) {
+    if (remember) {
       localStorage.setItem('token', token);
     }
     dispatch(getToken(token));
@@ -74,7 +74,7 @@ function Login() {
             <input
               type='text'
               id='username'
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => dispatch(setEmail(e.target.value))}
             />
           </div>
           <div className='input-wrapper'>
@@ -82,7 +82,7 @@ function Login() {
             <input
               type='password'
               id='password'
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => dispatch(setPassword(e.target.value))}
             />
           </div>
           <div className='input-remember'>
