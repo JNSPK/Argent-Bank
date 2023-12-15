@@ -24,7 +24,7 @@ function Login() {
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     if (token === storedToken) {
-      ajoutToken(storedToken);
+      addToken(storedToken);
     }
   });
 
@@ -35,7 +35,7 @@ function Login() {
     const res = await getLogin({ email, password });
     if (res.status !== 400) {
       setLoginStatus(res.status);
-      ajoutToken(res.token);
+      addToken(res.token);
     } else {
       setLoginErreur(res.message);
     }
@@ -48,7 +48,7 @@ function Login() {
   // Add the token
   const dispatch = useDispatch();
 
-  const ajoutToken = (token) => {
+  const addToken = (token) => {
     if (remember) {
       localStorage.setItem('token', token);
     }
