@@ -29,7 +29,7 @@ function Login() {
   // Handle Submit
   const handleSubmit = (event) => {
     event.preventDefault();
-    const login = getLogin({ email: email, password: password });
+    const login = getLogin({ email, password });
 
     login.then((res) => {
       if (res.status !== 400) {

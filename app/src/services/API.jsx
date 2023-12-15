@@ -2,11 +2,11 @@ import { getLoginData } from './API-Data';
 import { getUserData } from './API-Data';
 
 /* Get Login */
-export const getLogin = async (identifiants) => {
+export const getLogin = async ({ email, password }) => {
   const URL_API = 'http://localhost:3001/api/v1/user/login';
 
   const loginResponse = await fetch(URL_API, {
-    body: JSON.stringify(identifiants),
+    body: JSON.stringify({ email, password }),
     headers: {
       'Content-Type': 'application/json',
     },

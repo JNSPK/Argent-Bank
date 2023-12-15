@@ -4,6 +4,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Accueil from './pages/accueil';
 import Login from './pages/login';
+import Logout from './pages/logout';
 import Profil from './pages/profil';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
@@ -18,8 +19,8 @@ function App() {
             <Route path='/' element={<Accueil />} />
             <Route path='/login' element={<Login />} />
             <Route path='/profil' element={<Profil />} />
-            {/* <Route path='/logout' element={<Logout />} />
-            <Route path='*' element={<Erreur404 />} /> */}
+            <Route path='/logout' element={<Logout />} />
+            {/* <Route path='*' element={<Erreur404 />} /> */}
           </Routes>
           <Footer />
         </HashRouter>
