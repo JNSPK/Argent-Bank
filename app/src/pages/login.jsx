@@ -26,7 +26,7 @@ function Login() {
     if (token === storedToken) {
       addToken(storedToken);
     }
-  });
+  }, []);
 
   // Handle Submit
   const handleSubmit = async (event) => {

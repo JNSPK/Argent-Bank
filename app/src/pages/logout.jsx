@@ -10,7 +10,7 @@ function Logout() {
   useEffect(() => {
     dispatch(getToken(0));
     localStorage.removeItem('token');
-  });
+  }, []);
 
   // Redirection
   return <Navigate to='/' />;

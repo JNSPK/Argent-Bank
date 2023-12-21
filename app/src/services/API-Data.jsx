@@ -43,10 +43,8 @@ export function getUserData(data) {
 
 /* Save User Profil Data */
 export function saveUserProfilData(data) {
-  const res = {
+  return {
     status: data.status,
     message: data.message,
   };
-
-  return res;
 }

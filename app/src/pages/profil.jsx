@@ -29,7 +29,7 @@ const Profil = () => {
       dispatch(getFirstName(res.firstName));
       dispatch(getLastName(res.lastName));
     });
-  });
+  }, []);
 
   // Edit name
   const handleEdit = () => {
